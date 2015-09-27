@@ -61,8 +61,8 @@ names(DataTable) <-gsub("Mag", "Magnitude", names(DataTable))
 names(DataTable) <-gsub("BodyBody", "Body", names(DataTable))
 
 head(str(DataTable))
-
+library(plyr)
 ##Creating the tidy data set with the average of 
 ##each variable for each activity and each subject.
 New_DataTable <- ddply(DataTable, c("subject","activityNum"), numcolwise(mean))
-write.table(New_DataTable, file = "TidyData.txt")
+write.table(New_DataTable, file = "TidyData.txt", row.name=FALSE)
